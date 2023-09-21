@@ -1,0 +1,4 @@
+C:\Users\Laptop Checkout\Desktop\GameDesign\Scripting\ScriptingRepo\ScriptingPractice\obj\Debug\net7.0\ScriptingPractice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Laptop Checkout\Desktop\GameDesign\Scripting\ScriptingRepo\ScriptingPractice\obj\Debug\net7.0\ScriptingPractice.AssemblyInfoInputs.cache
+C:\Users\Laptop Checkout\Desktop\GameDesign\Scripting\ScriptingRepo\ScriptingPractice\obj\Debug\net7.0\ScriptingPractice.AssemblyInfo.cs
+C:\Users\Laptop Checkout\Desktop\GameDesign\Scripting\ScriptingRepo\ScriptingPractice\obj\Debug\net7.0\ScriptingPractice.csproj.CoreCompileInputs.cache
