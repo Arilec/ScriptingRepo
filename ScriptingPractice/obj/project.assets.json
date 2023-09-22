@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Laptop Checkout\\Desktop\\GameDesign\\Scripting\\ScriptingRepo\\ScriptingPractice\\ScriptingPractice.csproj",
+      "projectUniqueName": "c:\\Users\\Laptop Checkout\\Desktop\\GameDesign\\Scripting\\ScriptingRepo\\ScriptingPractice\\ScriptingPractice.csproj",
       "projectName": "ScriptingPractice",
-      "projectPath": "C:\\Users\\Laptop Checkout\\Desktop\\GameDesign\\Scripting\\ScriptingRepo\\ScriptingPractice\\ScriptingPractice.csproj",
+      "projectPath": "c:\\Users\\Laptop Checkout\\Desktop\\GameDesign\\Scripting\\ScriptingRepo\\ScriptingPractice\\ScriptingPractice.csproj",
       "packagesPath": "C:\\Users\\Laptop Checkout\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Laptop Checkout\\Desktop\\GameDesign\\Scripting\\ScriptingRepo\\ScriptingPractice\\obj\\",
+      "outputPath": "c:\\Users\\Laptop Checkout\\Desktop\\GameDesign\\Scripting\\ScriptingRepo\\ScriptingPractice\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Laptop Checkout\\AppData\\Roaming\\NuGet\\NuGet.Config"
