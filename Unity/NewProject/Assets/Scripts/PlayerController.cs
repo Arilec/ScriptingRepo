@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = 9.81f;
+    [SerializeField] private float sprintSpeed = 10f;
     
     private CharacterController controller;
     private Vector3 movement;
     private bool isJumping;
-    
+    private bool isCrouching;
     void Start()
     { 
         controller = GetComponent<CharacterController>();
@@ -21,16 +22,48 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //are we sprinting or walking
+        float move;
+        if (Input.GetKey(KeyCode.LeftShift) && isCrouching != true)
+        {
+            move = sprintSpeed;
+        }
+        else
+        {
+            move = moveSpeed;
+        }
+        
+        //Crouch Functionality
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            isCrouching = true;
+        }
+        else
+        {
+            isCrouching = false;
+        }
+        
+        if (isCrouching)
+        {
+            move /= 2;
+            controller.height = 0f;
+        }
+        else
+        {
+            controller.height = 1f;
+        }
+
         //movement script
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.z = Input.GetAxisRaw("Vertical") ;
+        movement.x = Input.GetAxisRaw("Horizontal")* move ;
+        movement.z = Input.GetAxisRaw("Vertical")* move  ;
         
         
         //gravity
-        movement.y =- gravity * Time.deltaTime;
+        movement.y -= gravity * Time.deltaTime;
+        
         
         //Jump functionality
-        if (Input.GetButton("Jump") && controller.isGrounded)
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             isJumping = true;
             Debug.Log("isJumping");
@@ -41,9 +74,9 @@ public class PlayerController : MonoBehaviour
             movement.y = jumpForce;
             isJumping = false;
         }
-        
+        Debug.Log(movement.y);
         //final movement
-        controller.Move(movement * moveSpeed * Time.deltaTime);
+        controller.Move(movement * Time.deltaTime);
 
        
         
