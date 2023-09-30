@@ -1,7 +1,12 @@
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.InputSystem;
+//using UnityEngine.UIElements;
+//using Cursor = UnityEngine.UIElements.Cursor;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,19 +14,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float sprintSpeed = 10f;
+    [SerializeField] private float mouseSens = 3f;
+    //[SerializeField]private Camera camera;
     
     private CharacterController controller;
     private Vector3 movement;
+    private Vector2 mouseLook;
     private bool isJumping;
     private bool isCrouching;
+   
+    [SerializeField] private Transform childTrans;
+    [SerializeField] private Rigidbody childRB;
+    
+    
+    
     void Start()
-    { 
+    {
         controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
+        //Mouse as inputs
+        mouseLook.y += Input.GetAxis("Mouse X") * mouseSens;
+        mouseLook.x -= Input.GetAxis("Mouse Y") * mouseSens;
+        
+        
         //are we sprinting or walking
         float move;
         if (Input.GetKey(KeyCode.LeftShift) && isCrouching != true)
@@ -32,6 +53,8 @@ public class PlayerController : MonoBehaviour
         {
             move = moveSpeed;
         }
+        
+        
         
         //Crouch Functionality
         if (Input.GetKey(KeyCode.LeftControl))
@@ -53,10 +76,9 @@ public class PlayerController : MonoBehaviour
             controller.height = 1f;
         }
 
-        //movement script
+        //movement input
         movement.x = Input.GetAxisRaw("Horizontal")* move ;
         movement.z = Input.GetAxisRaw("Vertical")* move  ;
-        
         
         //gravity
         movement.y -= gravity * Time.deltaTime;
@@ -69,16 +91,30 @@ public class PlayerController : MonoBehaviour
             Debug.Log("isJumping");
             
         }
+
         if (isJumping)
         {
             movement.y = jumpForce;
             isJumping = false;
         }
-        Debug.Log(movement.y);
+
+        transform.rotation = Quaternion.Euler(0f, mouseLook.y, 0f);
+        childTrans.rotation = Quaternion.Euler(mouseLook);
+        
+        
         //final movement
         controller.Move(movement * Time.deltaTime);
 
-       
+        
+        //Combat Roll
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //want to do switch statement, but because of user stuff I can't
+            controller.height = 0f;
+            controller.Move(movement * move * Time.deltaTime);
+        }
+        
+        
         
         
 
