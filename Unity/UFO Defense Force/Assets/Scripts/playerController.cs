@@ -1,7 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.UIElements;
 
 public class playerController : MonoBehaviour
 {
@@ -18,8 +19,8 @@ public class playerController : MonoBehaviour
     public Vector3 stageCenter;
 
     private Vector3 _movement;
-    
-    
+
+    private GameObject[] _inventory;
     
     
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class playerController : MonoBehaviour
         stageCenter = transform.position;
         _controller = GetComponent<CharacterController>();
         stageSize += new Vector2(stageCenter.x, stageCenter.z);
-        cannon = GetComponentInChildren<Transform>();
+        _inventory = new GameObject[12];
 
     }
 
@@ -75,6 +76,24 @@ public class playerController : MonoBehaviour
     //destroys projectiles that collide with player
     private void OnTriggerEnter(Collider other)
     {
+        //detects whether an item is for inventory
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            for (int i = 0; i < _inventory.Length; i++)
+            {
+                if (_inventory[i] == null)
+                {
+                    _inventory[i] = other.gameObject;
+                    break;
+                }
+            }
+
+            foreach (var item in _inventory)
+            {
+                if (item != null)
+                    Debug.Log(item.name);
+            }
+        }
         Destroy(other.gameObject);
     }
 }
