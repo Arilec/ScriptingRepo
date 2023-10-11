@@ -40,7 +40,7 @@ public class playerController : MonoBehaviour
         //get movement inputs
         movementInputs.x = Input.GetAxis("Horizontal");
         movementInputs.y = Input.GetAxis("Vertical");
-        _movement = new Vector3(movementInputs.x, -1f, movementInputs.y);
+        _movement = new Vector3(movementInputs.x, 0f, movementInputs.y);
         
         //cancels out horizontal movement if player exceeds boundaries
         if (transform.position.x >= stageSize.x/2)
