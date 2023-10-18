@@ -14,6 +14,8 @@ public class playerController : MonoBehaviour
 
     public GameObject projectile;
 
+    public GameManager gameManager;
+
     public Vector2 stageSize = new Vector2(40f, 12f);
     
     public Vector3 stageCenter;
@@ -31,7 +33,7 @@ public class playerController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         stageSize += new Vector2(stageCenter.x, stageCenter.z);
         _inventory = new GameObject[12];
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -65,7 +67,7 @@ public class playerController : MonoBehaviour
 
         _controller.Move(_movement * speed * Time.deltaTime);
     //change for automatic fire and multi-fire
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && gameManager.isGameOver == false)
         {
             //creates projectile at cannon
             Instantiate(projectile, cannon.position, projectile.transform.rotation);
