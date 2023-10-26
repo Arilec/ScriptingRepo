@@ -25,8 +25,10 @@ public class DestroyOutOfBounds : MonoBehaviour
         else if (transform.position.z < lowerBounds)
         {
             if (CompareTag("Enemy"))
+            {
                 Debug.Log("Game Over");
-            gameManager.isGameOver = true;
+                gameManager.isGameOver = true;
+            }
             Destroy(gameObject);
             //Time.timeScale = 0;
         }

@@ -38,5 +38,6 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         Time.timeScale = 0; //Freeze time
+        Debug.Log("Game Over");
     }
 }

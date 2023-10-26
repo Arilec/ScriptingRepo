@@ -12,13 +12,13 @@ public class HealthPowerUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //apply the health value to the player
-            //ApplyHealth(other.gameObject);
+            ApplyHealth(other.gameObject);
             
             //destroy the power up in game
             Destroy(gameObject);
         }
     }
-/*
+
     private void ApplyHealth(GameObject player)
     {
         //retrieve the player's health component
@@ -30,5 +30,5 @@ public class HealthPowerUp : MonoBehaviour
             healthController.AddHealth(healthValue.Value);
         }
     }
-    */
+    
 }

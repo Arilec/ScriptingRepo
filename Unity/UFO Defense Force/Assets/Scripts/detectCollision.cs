@@ -9,6 +9,7 @@ public class detectCollision : MonoBehaviour
     public ScoreManager scoreManager; //reference to score manager
 
     public int scoreToGive;
+    public float Damage; //only applies on player
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class detectCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy")) //Compares tags to see if the colliding object is a player
         {
-            //we will see later what happens
+            other.GetComponent<HealthController>().SubtractHealth(Damage);
         }
         else
         {
