@@ -23,7 +23,8 @@ public class playerController : MonoBehaviour
     private Vector3 _movement;
 
     private GameObject[] _inventory;
-    
+
+    private AmmoController _ammoController;
     
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class playerController : MonoBehaviour
         stageSize += new Vector2(stageCenter.x, stageCenter.z);
         _inventory = new GameObject[12];
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _ammoController = GetComponent<AmmoController>();
     }
 
     // Update is called once per frame
@@ -70,7 +72,15 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && gameManager.isGameOver == false)
         {
             //creates projectile at cannon
-            Instantiate(projectile, cannon.position, projectile.transform.rotation);
+            if (_ammoController.currentAmmo > 0)
+            {
+                Instantiate(projectile, cannon.position, projectile.transform.rotation);
+                _ammoController.useAmmo(1);
+            }
+            else
+            {
+                Debug.Log("out of ammo");
+            }
         }
 
     }

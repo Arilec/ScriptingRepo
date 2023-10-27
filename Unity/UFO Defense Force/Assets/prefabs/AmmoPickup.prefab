@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 1479173664861454069}
   - component: {fileID: -1442147007974677689}
   - component: {fileID: -8359138801405092611}
+  - component: {fileID: 3328225297653248699}
   m_Layer: 0
-  m_Name: PowerUp
+  m_Name: AmmoPickup
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +136,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperBounds: 30
   lowerBounds: -10
+  gameManager: {fileID: 0}
+--- !u!114 &3328225297653248699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308226775005251343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0ecc1c8d188b047af367f3d5b85d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmmoValue: {fileID: 11400000, guid: 192549b07613bd64b9529f1b6f34010d, type: 2}
 --- !u!1 &3978595836116783453
 GameObject:
   m_ObjectHideFlags: 0

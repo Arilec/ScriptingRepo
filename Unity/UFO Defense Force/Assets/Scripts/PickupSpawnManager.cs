@@ -5,13 +5,13 @@ using UnityEngine;
 public class PickupSpawnManager : MonoBehaviour
 {
 
-    public GameObject PickupPrefab; //array to store UFO ships
+    public GameObject[] PickupPrefab; //array to store UFO ships
     private float spawnRangeX = 20f;
     private float spawnRangeY = 20f;
-    private float startDelay = 2f;
-    private float spawnInterval = 60f;
-    
-    
+    private float startDelay = 10f;
+    private float spawnInterval = 10f;
+
+    int pickupIndex;
 
     void Start()
     {
@@ -29,9 +29,9 @@ public class PickupSpawnManager : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1f, spawnRangeY);
             
-        
+        pickupIndex = Random.Range(0, PickupPrefab.Length);
         //spawns from UFO array at a random location on X axis
-        Instantiate(PickupPrefab, spawnPos, PickupPrefab.transform.rotation);
+        Instantiate(PickupPrefab[pickupIndex], spawnPos, PickupPrefab[pickupIndex].transform.rotation);
     }
 }
 

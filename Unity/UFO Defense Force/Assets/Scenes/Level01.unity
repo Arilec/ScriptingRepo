@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 110210487}
   - component: {fileID: 110210492}
   - component: {fileID: 110210493}
+  - component: {fileID: 110210494}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -270,6 +271,20 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   maxHealth: 20
   currentHealth: 0
+--- !u!114 &110210494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110210485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba8b170ecc9b6342bc57c8ab93fe09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 999
+  currentAmmo: 30
 --- !u!1 &399292788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,7 +1066,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b0271a759aec841844a84a23b9f99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupPrefab: {fileID: 1308226775005251343, guid: 67b0227870e982446ab184ebcd711815, type: 3}
+  PickupPrefab:
+  - {fileID: 1308226775005251343, guid: 67b0227870e982446ab184ebcd711815, type: 3}
+  - {fileID: 1308226775005251343, guid: ad8d7516e9c371d45914c8f03138a86c, type: 3}
 --- !u!1 &1665614559
 GameObject:
   m_ObjectHideFlags: 0

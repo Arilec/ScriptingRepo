@@ -19,11 +19,11 @@ public class detectCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy")) //Compares tags to see if the colliding object is a player
+        if (other.gameObject.CompareTag("Player")) //Compares tags to see if the colliding object is a player
         {
             other.GetComponent<HealthController>().SubtractHealth(Damage);
         }
-        else
+        else if (!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("PickUp"))
         {
             scoreManager.IncreaseScore(scoreToGive); //Increase the Score
             Destroy(other.gameObject);
