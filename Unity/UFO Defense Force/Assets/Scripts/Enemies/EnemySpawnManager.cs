@@ -8,8 +8,8 @@ public class EnemySpawnManager : MonoBehaviour
 {
 
     public GameObject[] UFOPrefabs; //array to store UFO ships
-    private float spawnRangeX = 20f;
-    private float spawnRangeY = 20f;
+    [SerializeField] private float spawnRangeX = 15f;
+    [SerializeField] private float spawnRangeY = 20f;
     private float startDelay = 2f;
     private float spawnInterval = 1.5f;
     
