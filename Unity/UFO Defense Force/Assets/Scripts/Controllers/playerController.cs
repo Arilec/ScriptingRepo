@@ -120,7 +120,7 @@ public class playerController : MonoBehaviour
             Source.PlayOneShot(audioClip[1]);
             particle.Play();
         }
-
-        Destroy(other.gameObject);
+        if (!other.gameObject.CompareTag("Environment"))
+            Destroy(other.gameObject);
     }
 }
