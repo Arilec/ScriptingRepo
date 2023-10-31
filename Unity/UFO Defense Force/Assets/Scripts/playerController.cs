@@ -20,6 +20,12 @@ public class playerController : MonoBehaviour
     
     public Vector3 stageCenter;
 
+    public AudioSource Source;
+
+    public AudioClip[] audioClip;
+
+    public ParticleSystem particle;
+
     private Vector3 _movement;
 
     private GameObject[] _inventory;
@@ -30,6 +36,8 @@ public class playerController : MonoBehaviour
     void Start()
     {
         //creates the center for our player movement
+        particle = GetComponent<ParticleSystem>();
+        Source = GetComponent<AudioSource>();
         stageCenter = transform.position;
         _controller = GetComponent<CharacterController>();
         stageSize += new Vector2(stageCenter.x, stageCenter.z);
@@ -91,6 +99,8 @@ public class playerController : MonoBehaviour
         //detects whether an item is for inventory
         if (other.gameObject.CompareTag("PickUp"))
         {
+            
+            Source.PlayOneShot(audioClip[0]);
             for (int i = 0; i < _inventory.Length; i++)
             {
                 if (_inventory[i] == null)
@@ -99,13 +109,18 @@ public class playerController : MonoBehaviour
                     break;
                 }
             }
-
+            
             foreach (var item in _inventory)
             {
                 if (item != null)
                     Debug.Log(item.name);
             }
+        } else if (other.gameObject.CompareTag("Enemy"))
+        {
+            Source.PlayOneShot(audioClip[1]);
+            particle.Play();
         }
+
         Destroy(other.gameObject);
     }
 }

@@ -10,9 +10,19 @@ public class detectCollision : MonoBehaviour
 
     public int scoreToGive;
     public float Damage; //only applies on player
+   
+    public AudioSource audioSource;
+
+    public GameObject Explosion;
+    
+    public moveForward Move;
+     
 
     void Start()
     {
+        
+        Move = GetComponent<moveForward>();//get movement controller
+        audioSource = GameObject.Find("EnemyAudio").GetComponent<AudioSource>(); //finds audiosource for enemies
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>(); //find Score manager Component and reference scoreManager
     }
 
@@ -26,6 +36,9 @@ public class detectCollision : MonoBehaviour
         else if (!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("PickUp"))
         {
             scoreManager.IncreaseScore(scoreToGive); //Increase the Score
+            Instantiate(Explosion, transform.position, Explosion.transform.rotation);
+            audioSource.Play();
+            Move.speed = 0f;
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

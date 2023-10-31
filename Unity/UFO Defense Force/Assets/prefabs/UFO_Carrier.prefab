@@ -179,3 +179,6 @@ MonoBehaviour:
   scoreManager: {fileID: 0}
   scoreToGive: 1
   Damage: 2
+  audioSource: {fileID: 0}
+  Explosion: {fileID: 612101386006128187, guid: fec14792ed133b14ab98c44fbbe9edeb, type: 3}
+  Move: {fileID: 0}
