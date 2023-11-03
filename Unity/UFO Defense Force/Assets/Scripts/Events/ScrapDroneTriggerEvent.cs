@@ -1,11 +1,10 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
-public class TriggerEventsBehavior : MonoBehaviour
+public class ScrapDroneTriggerEvent : MonoBehaviour
 {
     public UnityEvent triggerEnterEvent, triggerExitEvent;
 
@@ -27,3 +26,4 @@ public class TriggerEventsBehavior : MonoBehaviour
         triggerExitEvent.Invoke();
     }
 }
+
