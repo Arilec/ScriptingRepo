@@ -33,7 +33,7 @@ public class detectCollision : MonoBehaviour
         {
             other.GetComponent<HealthController>().SubtractHealth(Damage);
         }
-        else if (!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("PickUp"))
+        else if (!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("PickUp") && !other.gameObject.CompareTag("Environment"))
         {
             scoreManager.IncreaseScore(scoreToGive); //Increase the Score
             Instantiate(Explosion, transform.position, Explosion.transform.rotation);

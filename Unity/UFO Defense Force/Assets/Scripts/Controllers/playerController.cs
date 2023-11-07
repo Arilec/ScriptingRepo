@@ -14,6 +14,8 @@ public class playerController : MonoBehaviour
 
     public GameObject projectile;
 
+    public GameObject missile;
+
     public GameManager gameManager;
 
     public Vector2 stageSize = new Vector2(40f, 12f);
@@ -91,6 +93,9 @@ public class playerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.R) && gameManager.isGameOver == false)
+            Instantiate(missile, cannon.position, missile.transform.rotation);
+
     }
 
     //destroys projectiles that collide with player
@@ -120,7 +125,7 @@ public class playerController : MonoBehaviour
             Source.PlayOneShot(audioClip[1]);
             particle.Play();
         }
-        if (!other.gameObject.CompareTag("Environment"))
+        if (!other.gameObject.CompareTag("Environment") && !other.gameObject.CompareTag("projectile"))
             Destroy(other.gameObject);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class ScrapDroneTriggerEvent : MonoBehaviour
 {
-    public UnityEvent triggerEnterEvent, triggerExitEvent;
+    public UnityEvent destroyEvent;
 
     private Collider colliderOBJ;
 
@@ -18,12 +19,16 @@ public class ScrapDroneTriggerEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        triggerEnterEvent.Invoke();
+        transform.LookAt(other.gameObject.transform);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnDestroy()
     {
-        triggerExitEvent.Invoke();
+        destroyEvent.Invoke();
     }
+
+    
+        
+    
 }
 

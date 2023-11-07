@@ -25,7 +25,7 @@ public class PickupSpawnManager : MonoBehaviour
     }
     
     //spawn random UFO function
-    void SpawnPickup()
+    public void SpawnPickup()
     {
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1f, spawnRangeY);
             
