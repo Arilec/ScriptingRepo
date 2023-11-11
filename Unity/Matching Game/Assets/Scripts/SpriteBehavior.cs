@@ -6,7 +6,7 @@ public class SpriteBehavior : MonoBehaviour
 {
     private SpriteRenderer rendererOBJ;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rendererOBJ = GetComponent<SpriteRenderer>();
     }

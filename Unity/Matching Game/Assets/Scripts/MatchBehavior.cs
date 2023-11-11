@@ -8,12 +8,12 @@ using UnityEngine.Events;
 public class MatchBehavior : MonoBehaviour
 {
    public ID IDObj;
-   public UnityEvent matchEvent, noMatchEvent;
-   private void OnTriggerEnter(Collider other)
+   public UnityEvent matchEvent, noMatchEvent, noMatchDelay;
+   private IEnumerator OnTriggerEnter(Collider other)
    {
       var tempOBJ =  other.GetComponent<IDContainerBehavior>();
       if (tempOBJ == null)
-         return;
+         yield break;
          
       var otherID = tempOBJ.IDObj;
       if (otherID == IDObj)
@@ -23,6 +23,8 @@ public class MatchBehavior : MonoBehaviour
       else
       {
          noMatchEvent.Invoke();
+         yield return new WaitForSeconds(0.5f);
+         noMatchDelay.Invoke();
       }
    }
 }
