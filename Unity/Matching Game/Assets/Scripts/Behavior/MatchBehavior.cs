@@ -11,16 +11,16 @@ public class MatchBehavior : MonoBehaviour
    public UnityEvent matchEvent, noMatchEvent, noMatchDelay;
    private IEnumerator OnTriggerEnter(Collider other)
    {
-      var tempOBJ =  other.GetComponent<IDContainerBehavior>();
+      var tempOBJ =  other.GetComponent<IDContainerBehavior>(); //14-16 check for null and cancel if null
       if (tempOBJ == null)
          yield break;
          
       var otherID = tempOBJ.IDObj;
-      if (otherID == IDObj)
+      if (otherID == IDObj) //if match
       {
          matchEvent.Invoke();
       }
-      else
+      else //no match
       {
          noMatchEvent.Invoke();
          yield return new WaitForSeconds(0.5f);

@@ -14,20 +14,20 @@ public class DraggableBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cameraOBJ = Camera.main;
+        cameraOBJ = Camera.main; //assigns main camera
     }
 
     public IEnumerator OnMouseDown()
     {
-        offset = transform.position - cameraOBJ.ScreenToWorldPoint(Input.mousePosition);
+        offset = transform.position - cameraOBJ.ScreenToWorldPoint(Input.mousePosition); //mouse position offset
         draggable = true;
         startDragEvent.Invoke();
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate(); //wait for fixed update
         
         while (draggable)
         {   
-            yield return new WaitForFixedUpdate();
-            position = cameraOBJ.ScreenToWorldPoint(Input.mousePosition) + offset;
+            yield return new WaitForFixedUpdate(); //again
+            position = cameraOBJ.ScreenToWorldPoint(Input.mousePosition) + offset; //combine mousepos with offset
             transform.position = position;
         }
     }
