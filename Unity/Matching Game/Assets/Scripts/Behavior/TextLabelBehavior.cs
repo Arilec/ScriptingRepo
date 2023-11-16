@@ -25,4 +25,9 @@ public class TextLabelBehavior : MonoBehaviour
     {
         scoreText.text = score.value.ToString(CultureInfo.InvariantCulture);
     }
+
+    public void UpdateText(string text)
+    {
+        scoreText.text = text;
+    }
 }
