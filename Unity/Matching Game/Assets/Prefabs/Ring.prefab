@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4495149939779530169}
   - component: {fileID: 8881424035709759403}
+  - component: {fileID: 3589379747652759426}
   m_Layer: 7
   m_Name: HiddenDot
   m_TagString: Untagged
@@ -73,17 +74,29 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3887034060277326287, guid: 94429f135245f44be998407f62322bf2, type: 3}
+  m_Sprite: {fileID: 779445213, guid: 4d9eda157bf952e44abbcbbba8b43fe6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.21960784}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.04, y: 2.04}
+  m_Size: {x: 2.17, y: 2.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3589379747652759426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432920707061807688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8015dfb9c7c5b43b0874e423fc5a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3453476504771002698
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +112,7 @@ GameObject:
   - component: {fileID: -8099763261422931604}
   - component: {fileID: 3754324098676039534}
   - component: {fileID: 5381984641031566846}
-  - component: {fileID: -5699656864432987459}
+  - component: {fileID: -4616539690210789948}
   m_Layer: 7
   m_Name: Ring
   m_TagString: Untagged
@@ -205,7 +218,7 @@ Rigidbody:
   m_GameObject: {fileID: 3453476504771002698}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 3
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -275,25 +288,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDisableEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &-5699656864432987459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3453476504771002698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86585cea759c36e4dbe7a44283e0ad39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IDObj: {fileID: 11400000, guid: f5f3543921f7d54418720859f960057b, type: 2}
-  startEvent:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 11400000, guid: d5b681af6d8afab42ac8f519ebd9f390, type: 2}
         m_TargetAssemblyTypeName: ColorIDListData, Assembly-CSharp
         m_MethodName: setCurrentColorRandomly
@@ -306,4 +300,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-4616539690210789948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453476504771002698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a0680273d298148a2831a19f931c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IDObj: {fileID: 11400000, guid: 69a6a9f8a98074740848d004a62c66de, type: 2}
+  matchEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4616539690210789948}
+        m_TargetAssemblyTypeName: ColorMatchBehavior, Assembly-CSharp
+        m_MethodName: changeColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8881424035709759403}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  noMatchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  noMatchDelay:
+    m_PersistentCalls:
+      m_Calls: []
   colorDataList: {fileID: 11400000, guid: d5b681af6d8afab42ac8f519ebd9f390, type: 2}
