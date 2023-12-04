@@ -11,7 +11,7 @@ public class MatchBehavior : MonoBehaviour
    public UnityEvent matchEvent, noMatchEvent, noMatchDelay;
    private IEnumerator OnTriggerEnter(Collider other)
    {
-      var tempOBJ =  other.GetComponent<IDContainerBehavior>(); //14-16 check for null and cancel if null
+      var tempOBJ =  other.GetComponent<MatchBehavior>(); //14-16 check for null and cancel if null
       if (tempOBJ == null)
          yield break;
          

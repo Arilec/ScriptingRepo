@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class CoroutineBehavior : MonoBehaviour
 {
-    public bool canRun;
+    public bool _canRun;
     public UnityEvent startEvent, startCountEvent, repeatCountEvent, endCountEvent, repeatUntilFalseEvent;
     public IntData counterNum;
     public float seconds = 3.0f;
@@ -14,6 +14,14 @@ public class CoroutineBehavior : MonoBehaviour
     private WaitForSeconds wfsobj;
 
     private WaitForFixedUpdate wffuobj;
+
+    public bool CanRun
+    {
+        get => _canRun;
+        set => _canRun = value;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +55,7 @@ public class CoroutineBehavior : MonoBehaviour
 
     private IEnumerator repeatUntilFalse()
     {
-        while (canRun)
+        while (CanRun)
         {
             yield return wfsobj;
             repeatUntilFalseEvent.Invoke();
